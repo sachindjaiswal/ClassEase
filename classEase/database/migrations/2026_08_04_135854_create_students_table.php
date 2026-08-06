@@ -16,9 +16,9 @@ return new class extends Migration
             $table -> foreignId('classId')->constrained('classes')->cascadeOnDelete();
             // $table -> unsignedBigInteger('classId');
             $table -> string('firstName');
-            $table->string('middleName');
+            $table->string('middleName')->nullable();
             $table -> string('surname');
-            $table -> string('email');
+            $table -> string('email')->unique();
             $table -> string('password');
             $table->string('contact');
             $table->string('parentContact');
