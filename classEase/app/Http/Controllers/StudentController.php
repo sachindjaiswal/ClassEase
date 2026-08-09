@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
+    // Add Student 
     public function addStudent(Request $request)
     {
         $validated = $request->validate([
@@ -29,5 +30,28 @@ class StudentController extends Controller
         return response()->json([
             'message' => 'Student added successfully'
         ]);
+    }
+
+    // get Student 
+    public function getStudent($id){
+
+        $student = Student::with('class')->find($id);
+
+        if(!$student){
+            return response()->json(['message'=>'Student not found'],404);
+        };
+
+        return response()->json($student);
+    }
+
+
+    public function getAllStudentFromClass($id){
+        $students = Student::with('class')->where( 'classId', $id )->get();
+
+        if(!$students){
+            return response()->json(['message'=>'There are no students in the class'] , 404);
+        }
+
+        return response()->json($students);
     }
 }

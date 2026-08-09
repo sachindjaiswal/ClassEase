@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('classes', function (Blueprint $table) {
         $table->id();
+        $table-> foreignId('class_teacher')->constrained('teachers')->cascadeOnDelete();
         $table->string('class_name');
         $table->string('section');
+        $table->string('room_no');
         $table->timestamps();
 });
     }

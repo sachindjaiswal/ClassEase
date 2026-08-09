@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Teacher;
 use App\Models\teacher as ModelsTeacher;
 use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
     // Get all teachers
-    public function index()
+    public function getAllTeachers()
     {
-        return response()->json(Teacher::all(), 200);
+        return response()->json(ModelsTeacher::all(), 200);
     }
 
     // Get one teacher
-    public function show($id)
+    public function getTeacher($id)
     {
         $teacher = ModelsTeacher::find($id);
 
@@ -29,7 +28,7 @@ class TeacherController extends Controller
     }
 
     // Add teacher
-    public function store(Request $request)
+    public function createTeacher(Request $request)
     {
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
@@ -50,7 +49,7 @@ class TeacherController extends Controller
     }
 
     // Update teacher
-    public function update(Request $request, $id)
+    public function updateTeacher(Request $request, $id)
     {
         $teacher = ModelsTeacher::find($id);
 
@@ -79,7 +78,7 @@ class TeacherController extends Controller
     }
 
     // Delete teacher
-    public function destroy($id)
+    public function deleteTeacher($id)
     {
         $teacher = ModelsTeacher::find($id);
 

@@ -29,4 +29,17 @@ class Student extends Model
 'parentContact' => 'string',
         'address'=> 'string'
     ];
+
+
+    protected $hidden = [
+        'password',
+        'created_at',
+        'updated_at',
+        'classId'
+        
+    ];
+    public function class()
+    {
+        return $this->belongsTo(classes::class , 'classId');
+    }
 }
