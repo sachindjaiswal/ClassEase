@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ClassesResource;
 use App\Models\classes;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ClassesController extends Controller
 
         return response()->json([
             'message' => 'Classes retrieved successfully',
-            'classes' => $classes
+            'classes' => ClassesResource::collection($classes)
         ], 200);
     }
 
