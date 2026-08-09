@@ -3,10 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class teacher extends Model
 {
     //
+
+    use SoftDeletes;
+     
     protected $fillable = [
         "first_name",
         "middle_name",
@@ -16,6 +20,13 @@ class teacher extends Model
         "designation",
         "monthly_salary"
         
+    ];
+
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
     ];
 
     protected $casts = [

@@ -3,10 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Student extends Model
 {
     //
+
+    use SoftDeletes ;
+
     protected $fillable = [
         'classId',
         'firstName',
@@ -26,7 +30,7 @@ class Student extends Model
         'email' => 'string',
         'password'=> 'string',
         'contact' => 'string',
-'parentContact' => 'string',
+        'parentContact' => 'string',
         'address'=> 'string'
     ];
 
@@ -36,8 +40,9 @@ class Student extends Model
         'created_at',
         'updated_at',
         'classId'
-        
     ];
+
+    
     public function class()
     {
         return $this->belongsTo(classes::class , 'classId');

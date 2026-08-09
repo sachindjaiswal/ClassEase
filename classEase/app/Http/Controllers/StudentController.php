@@ -54,4 +54,6 @@ class StudentController extends Controller
 
         return response()->json($students);
     }
+
+    
 }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table -> string("contact");
             $table -> string("designation");
             $table -> integer("monthly_salary");
+            $table -> softDeletes();
             $table->timestamps();
         });
     }
