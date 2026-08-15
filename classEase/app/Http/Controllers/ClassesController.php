@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ClassesResource;
 use App\Models\classes;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ClassesController extends Controller
 {
@@ -17,6 +18,10 @@ class ClassesController extends Controller
             'message' => 'Classes retrieved successfully',
             'classes' => ClassesResource::collection($classes)
         ], 200);
+    //     return Inertia::render('getClasses', [
+    // 'classes' => $classes,
+
+    
     }
 
 

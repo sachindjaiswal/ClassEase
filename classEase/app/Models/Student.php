@@ -7,44 +7,41 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Student extends Model
 {
-    //
-
-    use SoftDeletes ;
+    use SoftDeletes;
 
     protected $fillable = [
+        'user_id',
         'classId',
         'firstName',
         'middleName',
         'surname',
-        'email',    
-        'password', 
         'contact',
         'parentContact',
-        'address'
+        'address',
     ];
 
+    protected $hidden = [
+        'user_id',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
     protected $casts = [
         'firstName' => 'string',
         'middleName' => 'string',
         'surname' =>  'string',
-        'email' => 'string',
-        'password'=> 'string',
         'contact' => 'string',
         'parentContact' => 'string',
         'address'=> 'string'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
-    protected $hidden = [
-        'password',
-        'created_at',
-        'updated_at',
-        'classId'
-    ];
-
-    
     public function class()
     {
-        return $this->belongsTo(classes::class , 'classId');
+        return $this->belongsTo(classes::class, 'classId');
     }
 }
